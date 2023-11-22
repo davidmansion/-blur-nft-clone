@@ -18,7 +18,7 @@ app.get("/getnftdata", async (req, res) => {
     if (typeof query.contractAddress === "string") {
       const response = await Moralis.EvmApi.nft.getNFTTrades({
         address: query.contractAddress,
-        chain: "0x1",
+        chain: "0x38",
       });
 
       return res.status(200).json(response);
@@ -28,7 +28,7 @@ app.get("/getnftdata", async (req, res) => {
       for (let i = 0; i < query.contractAddress.length; i++) {
         const response = await Moralis.EvmApi.nft.getNFTTrades({
           address: query.contractAddress[i],
-          chain: "0x1",
+          chain: "0x38",
         });
 
         nftData.push(response);
@@ -46,7 +46,7 @@ app.get("/getnftdata", async (req, res) => {
 app.get("/getcontractnft", async (req, res) => {
   try {
     const { query } = req;
-    const chain = query.chain == "0x5" ? "0x5" : "0x1";
+    const chain = query.chain == "0x61" ? "0x61" : "0x38";
 
     const response = await Moralis.EvmApi.nft.getContractNFTs({
       chain,
